@@ -11,6 +11,7 @@ export default function HomePage() {
             </div>
             <div className="container flex flex-col items-center justify-start gap-12 px-4 py-16">
                 <Link className="text-lg font-bold" href="/test">Test</Link>
+                <Link className="text-lg font-bold" href="/posts">Posts</Link>
             </div>
         </main>
     );
