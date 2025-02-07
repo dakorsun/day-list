@@ -1,4 +1,4 @@
-import { TimeComponent } from "./time";
+import { TimeBoard } from "./time-board";
 
 export function HeaderComponent() {
 
@@ -8,8 +8,7 @@ export function HeaderComponent() {
         flex flex-row justify-between 
         text-white font-bold text-5xl
         ">
-        <TimeComponent startingMilliseconds={new Date().getTime()} />
-        {/* <TimeComponent startingMilliseconds={null} /> */}
+        <TimeBoard />
         <h1>DL</h1>
     </div>
 
