@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useDayItemStore } from "~/store";
 
 function formatSingleDigits(digits: number): string {
@@ -16,7 +16,7 @@ function Counter({ now }: { now: Date }) {
         function addNewDayItem() {
             addDayItem({ name: 'unknown', timestamp: new Date().getTime() })
         }
-        return <div className="cursor-pointer" onClick={addNewDayItem}>Nothing Happening</div>
+        return <div className="cursor-pointer text-amber-400" onClick={addNewDayItem}>Start Tracking</div>
     } else {
         const newDate = new Date(now.getTime() - lastItem.timestamp)
 
