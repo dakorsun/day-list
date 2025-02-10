@@ -4,61 +4,71 @@ import { useState, useEffect } from 'react';
 import { useDayItemStore } from '~/store';
 
 function formatSingleDigits(digits: number): string {
-  return digits < 10 ? `0${digits}` : `${digits}`;
+	return digits < 10 ? `0${digits}` : `${digits}`;
 }
 
 function Counter({ now }: { now: Date }) {
-  const lastItem = useDayItemStore(state => state.dayItems[0]);
-  const addDayItem = useDayItemStore(state => state.addDayItem);
+	const lastItem = useDayItemStore(state =>
+		state.dayItems ? state.dayItems[0] : null,
+	);
+	const hasHydrated = useDayItemStore(state => state._hasHydrated);
+	const setDayItems = useDayItemStore(state => state.setDayItems);
 
-  if (!lastItem) {
-    function addNewDayItem() {
-      addDayItem({ name: 'unknown', timestamp: new Date().getTime() });
-    }
-    return (
-      <div className="cursor-pointer text-amber-400" onClick={addNewDayItem}>
-        Start Tracking
-      </div>
-    );
-  } else {
-    const newDate = new Date(now.getTime() - lastItem.timestamp);
+	if (!hasHydrated) {
+		return <div className="cursor-pointer text-zinc-400">Loading</div>;
+	}
 
-    return (
-      <span>
-        {formatSingleDigits(newDate.getUTCHours())}:
-        {formatSingleDigits(newDate.getUTCMinutes())}:
-        {formatSingleDigits(newDate.getUTCSeconds())}
-      </span>
-    );
-  }
+	if (!lastItem) {
+		function addNewDayItem() {
+			if (setDayItems) {
+				setDayItems([{ name: 'unknown', timestamp: new Date().getTime() }]);
+			}
+		}
+		return (
+			<div className="cursor-pointer text-amber-400" onClick={addNewDayItem}>
+				Start Tracking
+			</div>
+		);
+	}
+
+	const tracker = new Date(now.getTime() - lastItem.timestamp);
+
+	return (
+		<div>
+			{formatSingleDigits(tracker.getUTCHours())}:
+			{formatSingleDigits(tracker.getUTCMinutes())}:
+			{formatSingleDigits(tracker.getUTCSeconds())}
+		</div>
+	);
 }
 
 export function TimeBoard() {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date());
+	const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
-  useEffect(() => {
-    const updateTime = () => {
-      setCurrentDate(new Date());
-    };
+	useEffect(() => {
+		const updateTime = () => {
+			setCurrentDate(new Date());
+		};
 
-    const interval = setInterval(updateTime, 500);
+		const interval = setInterval(updateTime, 500);
 
-    return () => clearInterval(interval);
-  });
+		return () => clearInterval(interval);
+	});
 
-  return (
-    <div
-      className="
-        flex flex-row justify-between 
+	return (
+		<div
+			className="
+        flex flex-row justify-between
         font-bold
+        cursor-pointer
         "
-    >
-      <span>
-        {formatSingleDigits(currentDate.getHours())}:
-        {formatSingleDigits(currentDate.getMinutes())}
-      </span>
-      |
-      <Counter now={currentDate} />
-    </div>
-  );
+		>
+			<span>
+				{formatSingleDigits(currentDate.getHours())}:
+				{formatSingleDigits(currentDate.getMinutes())}
+			</span>
+			|
+			<Counter now={currentDate} />
+		</div>
+	);
 }
