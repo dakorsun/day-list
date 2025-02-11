@@ -31,7 +31,7 @@ export function HeaderComponent() {
 			className="
         fixed top-0 left-0 w-full
         p-[1rem]
-        text-white font-bold text-5xl
+        font-bold text-5xl
 				shadow-md
 				transition-all
         "
@@ -53,14 +53,14 @@ export function HeaderComponent() {
 					isOpen ? 'max-h-[70vh]' : 'max-h-0'
 				}`}
 			>
-				<Card className="bg-gray-600 border-transparent p-4 overflow-y-auto max-h-[70vh]">
+				<div className="parent p-4 overflow-y-auto max-h-[70vh]">
 					<div className="space-y-4">
 						<Label htmlFor="name">What were you up to?</Label>
 						<Input id="name" placeholder="Your stuff" />
 
 						<Button className="w-full">Submit</Button>
 					</div>
-				</Card>
+				</div>
 			</div>
 		</div>
 	);

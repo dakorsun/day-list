@@ -15,7 +15,7 @@ function Counter({ now }: { now: Date }) {
 	const setDayItems = useDayItemStore(state => state.setDayItems);
 
 	if (!hasHydrated) {
-		return <div className="cursor-pointer text-zinc-400">Loading</div>;
+		return <div className="cursor-pointer text-muted-foreground">Loading</div>;
 	}
 
 	if (!lastItem) {
@@ -25,7 +25,7 @@ function Counter({ now }: { now: Date }) {
 			}
 		}
 		return (
-			<div className="cursor-pointer text-amber-400" onClick={addNewDayItem}>
+			<div className="cursor-pointer text-chart-1" onClick={addNewDayItem}>
 				Start Tracking
 			</div>
 		);
