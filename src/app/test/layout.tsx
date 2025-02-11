@@ -1,9 +1,9 @@
 export default function TestLayout({
-  children,
+	children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <div className="flex flex-col items-center justify-start text-white py-16">
-      {children}
-    </div>
-  );
+	return (
+		<div className="flex flex-col items-center justify-start text-white py-16">
+			{children}
+		</div>
+	);
 }
