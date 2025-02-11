@@ -3,7 +3,6 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { TimeBoard } from './time-board';
 import { useEffect, useState } from 'react';
-import { Card } from '~/components/ui/card';
 import { Label } from '@radix-ui/react-label';
 import { Input } from '~/components/ui/input';
 import { Textarea } from '~/components/ui/textarea';
