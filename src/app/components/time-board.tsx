@@ -42,7 +42,7 @@ function Counter({ now }: { now: Date }) {
 	);
 }
 
-export function TimeBoard() {
+export function TimeBoard({ onClick }: { onClick: () => void }) {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
 	useEffect(() => {
@@ -62,6 +62,7 @@ export function TimeBoard() {
         font-bold
         cursor-pointer
         "
+			onClick={onClick}
 		>
 			<span>
 				{formatSingleDigits(currentDate.getHours())}:
