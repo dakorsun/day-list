@@ -1,12 +1,12 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { TimeBoard } from './time-board';
 import { useEffect, useState } from 'react';
-import { Label } from '@radix-ui/react-label';
+import { Label } from '~/components/ui/label';
 import { Input } from '~/components/ui/input';
-import { Textarea } from '~/components/ui/textarea';
 import { Button } from '~/components/ui/button';
+import { TimeBoard } from './time-board';
+import ThemeSwitcher from './theme-switcher';
 
 export function HeaderComponent() {
 	const router = useRouter();
@@ -45,7 +45,7 @@ export function HeaderComponent() {
 						setIsOpen(!isOpen);
 					}}
 				/>
-				<h1>DL</h1>
+				<ThemeSwitcher />
 			</div>
 			<div
 				className={`transition-[max-height] duration-500 ease-in-out overflow-hidden ${
