@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { Label } from '~/components/ui/label';
 import { Input } from '~/components/ui/input';
 import { Button } from '~/components/ui/button';
-import { TimeBoard } from './time-board';
-import ThemeSwitcher from './theme-switcher';
+import { TimeBoard } from '~/components/time-board';
+import ThemeSwitcher from '~/components/theme-switcher';
 
 export function HeaderComponent() {
 	const router = useRouter();

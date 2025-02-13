@@ -2,8 +2,8 @@ import '~/styles/globals.css';
 
 import { GeistSans } from 'geist/font/sans';
 import { type Metadata } from 'next';
-import { HeaderComponent } from './components/header';
-import { ThemeProvider } from './components/theme-provider';
+import { ThemeProvider } from '~/components/theme-provider';
+import { HeaderComponent } from '~/components/header';
 
 export const metadata: Metadata = {
 	title: 'Day List',
