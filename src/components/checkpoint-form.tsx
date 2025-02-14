@@ -13,13 +13,17 @@ import {
 	FormMessage,
 } from '~/components/ui/form';
 import { DEFAULT_ITEM_NAME, useDayItemStore } from '~/store';
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 const formSchema = z.object({
 	name: z.string().min(2).max(20),
 });
 
-export function CheckpointForm() {
+export function CheckpointForm({
+	ignoreRef,
+}: {
+	ignoreRef: React.RefObject<HTMLFormElement>;
+}) {
 	const addDayItem = useDayItemStore(state => state.addDayItem);
 	const updateLastItem = useDayItemStore(state => state.updateLastItem);
 	const lastItem = useDayItemStore(state => state.dayItems[0]);
@@ -49,7 +53,11 @@ export function CheckpointForm() {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+			<form
+				ref={ignoreRef}
+				onSubmit={form.handleSubmit(onSubmit)}
+				className="space-y-4"
+			>
 				<FormField
 					control={form.control}
 					name="name"

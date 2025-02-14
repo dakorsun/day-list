@@ -10,6 +10,7 @@ export function HeaderComponent() {
 	const headerRef = useRef<HTMLDivElement>(null);
 	const counterIgnoreRef = useRef<HTMLDivElement>(null);
 	const logoIgnoreRef = useRef<HTMLDivElement>(null);
+	const formIgnoreRef = useRef<HTMLFormElement>(null);
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const isOpenFromUrl = searchParams.get('expanded') === 'true';
@@ -19,7 +20,7 @@ export function HeaderComponent() {
 	const handleClickOutside = useCallback(
 		(event: MouseEvent) => {
 			console.log('click');
-			console.log(headerRef, counterIgnoreRef);
+			console.log(headerRef, counterIgnoreRef, formIgnoreRef);
 			if (
 				headerRef.current &&
 				!headerRef.current.contains(event.target as Node)
@@ -28,12 +29,13 @@ export function HeaderComponent() {
 				setIsOpen(false);
 			} else if (
 				(counterIgnoreRef.current &&
-					counterIgnoreRef.current.contains(event.target as Node) &&
-					isOpen) ||
+					counterIgnoreRef.current.contains(event.target as Node)) ||
 				(logoIgnoreRef.current &&
-					logoIgnoreRef.current.contains(event.target as Node))
+					logoIgnoreRef.current.contains(event.target as Node)) ||
+				(formIgnoreRef.current &&
+					formIgnoreRef.current?.contains(event.target as Node))
 			) {
-				console.log('counter', isOpen);
+				console.log('ignore', isOpen);
 			} else {
 				console.log('inside', isOpen);
 				setIsOpen(!isOpen);
@@ -80,12 +82,10 @@ export function HeaderComponent() {
 				<ThemeSwitcher ignoreRef={logoIgnoreRef} />
 			</div>
 			<div
-				className={`transition-[max-height] duration-500 ease-in-out overflow-hidden ${
-					isOpen ? 'max-h-[70vh]' : 'max-h-0'
-				}`}
+				className={`transition-[max-height] duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-[70vh]' : 'max-h-0'}`}
 			>
 				<div className="parent p-4 pt-16 overflow-y-auto max-h-[70vh] flex justify-start align-middle">
-					<CheckpointForm />
+					<CheckpointForm ignoreRef={formIgnoreRef} />
 				</div>
 			</div>
 		</div>
