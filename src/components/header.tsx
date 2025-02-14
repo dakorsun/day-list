@@ -2,11 +2,9 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Label } from '~/components/ui/label';
-import { Input } from '~/components/ui/input';
-import { Button } from '~/components/ui/button';
 import { TimeBoard } from '~/components/time-board';
 import ThemeSwitcher from '~/components/theme-switcher';
+import { CheckpointForm } from './checkpoint-form';
 
 export function HeaderComponent() {
 	const router = useRouter();
@@ -24,6 +22,8 @@ export function HeaderComponent() {
 		}
 		router.replace(`?${params.toString()}`, { scroll: false });
 	}, [isOpen, router, searchParams]);
+
+	function onCheckpoint(checkpointName: string) {}
 
 	return (
 		<div
@@ -52,13 +52,8 @@ export function HeaderComponent() {
 					isOpen ? 'max-h-[70vh]' : 'max-h-0'
 				}`}
 			>
-				<div className="parent p-4 overflow-y-auto max-h-[70vh]">
-					<div className="space-y-4">
-						<Label htmlFor="name">What were you up to?</Label>
-						<Input id="name" placeholder="Your stuff" />
-
-						<Button className="w-full">Submit</Button>
-					</div>
+				<div className="parent p-4 pt-16 overflow-y-auto max-h-[70vh] flex justify-center align-middle">
+					<CheckpointForm onCheckpoint={onCheckpoint} />
 				</div>
 			</div>
 		</div>
