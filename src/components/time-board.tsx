@@ -1,13 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DEFAULT_ITEM_NAME, useDayItemStore } from '~/store';
 
 function formatSingleDigits(digits: number): string {
 	return digits < 10 ? `0${digits}` : `${digits}`;
 }
 
-function Counter({ now }: { now: Date }) {
+function Counter({
+	now,
+	ignoreRef,
+}: {
+	now: Date;
+	ignoreRef: React.RefObject<HTMLDivElement>;
+}) {
 	const lastItem = useDayItemStore(state =>
 		state.dayItems ? state.dayItems[0] : null,
 	);
@@ -27,7 +33,11 @@ function Counter({ now }: { now: Date }) {
 			}
 		}
 		return (
-			<div className="cursor-pointer text-chart-1" onClick={addNewDayItem}>
+			<div
+				ref={ignoreRef}
+				className="cursor-pointer text-chart-1"
+				onClick={addNewDayItem}
+			>
 				Start Tracking
 			</div>
 		);
@@ -44,7 +54,11 @@ function Counter({ now }: { now: Date }) {
 	);
 }
 
-export function TimeBoard({ onClick }: { onClick: () => void }) {
+export function TimeBoard({
+	ignoreRef,
+}: {
+	ignoreRef: React.RefObject<HTMLDivElement>;
+}) {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
 	useEffect(() => {
@@ -64,14 +78,13 @@ export function TimeBoard({ onClick }: { onClick: () => void }) {
         font-bold
         cursor-pointer
         "
-			onClick={onClick}
 		>
 			<span>
 				{formatSingleDigits(currentDate.getHours())}:
 				{formatSingleDigits(currentDate.getMinutes())}
 			</span>
 			|
-			<Counter now={currentDate} />
+			<Counter now={currentDate} ignoreRef={ignoreRef} />
 		</div>
 	);
 }
