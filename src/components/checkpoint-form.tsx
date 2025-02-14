@@ -12,16 +12,18 @@ import {
 	FormLabel,
 	FormMessage,
 } from '~/components/ui/form';
+import { DEFAULT_ITEM_NAME, useDayItemStore } from '~/store';
+import { useCallback } from 'react';
 
 const formSchema = z.object({
 	name: z.string().min(2).max(20),
 });
 
-export function CheckpointForm({
-	onCheckpoint,
-}: {
-	onCheckpoint: (chekpoint: string) => void;
-}) {
+export function CheckpointForm() {
+	const addDayItem = useDayItemStore(state => state.addDayItem);
+	const updateLastItem = useDayItemStore(state => state.updateLastItem);
+	const lastItem = useDayItemStore(state => state.dayItems[0]);
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -29,9 +31,20 @@ export function CheckpointForm({
 		},
 	});
 
+	const proceedCheckpoint = useCallback(
+		(name: string) => {
+			if (lastItem) {
+				updateLastItem({ name, timestamp: lastItem.timestamp });
+			}
+			addDayItem({ name: DEFAULT_ITEM_NAME, timestamp: new Date().getTime() });
+		},
+		[lastItem, updateLastItem, addDayItem],
+	);
+
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		console.log('submit', values);
-		onCheckpoint(values.name);
+		proceedCheckpoint(values.name);
+		form.resetField('name');
 	}
 
 	return (

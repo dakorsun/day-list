@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useDayItemStore } from '~/store';
+import { DEFAULT_ITEM_NAME, useDayItemStore } from '~/store';
 
 function formatSingleDigits(digits: number): string {
 	return digits < 10 ? `0${digits}` : `${digits}`;
@@ -21,7 +21,9 @@ function Counter({ now }: { now: Date }) {
 	if (!lastItem) {
 		function addNewDayItem() {
 			if (setDayItems) {
-				setDayItems([{ name: 'unknown', timestamp: new Date().getTime() }]);
+				setDayItems([
+					{ name: DEFAULT_ITEM_NAME, timestamp: new Date().getTime() },
+				]);
 			}
 		}
 		return (

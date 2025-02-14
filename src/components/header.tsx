@@ -23,11 +23,10 @@ export function HeaderComponent() {
 		router.replace(`?${params.toString()}`, { scroll: false });
 	}, [isOpen, router, searchParams]);
 
-	function onCheckpoint(checkpointName: string) {}
-
 	return (
 		<div
 			className="
+				bg-background
         fixed top-0 left-0 w-full
         p-[1rem]
         font-bold text-5xl
@@ -53,7 +52,7 @@ export function HeaderComponent() {
 				}`}
 			>
 				<div className="parent p-4 pt-16 overflow-y-auto max-h-[70vh] flex justify-center align-middle">
-					<CheckpointForm onCheckpoint={onCheckpoint} />
+					<CheckpointForm />
 				</div>
 			</div>
 		</div>
