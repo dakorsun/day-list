@@ -8,7 +8,7 @@ export default function HomePage() {
 					Day List
 				</h1>
 				<span className="text-lg font-bold">
-					Your simple thing to manage your day
+					Your simple thing to record your day
 				</span>
 			</div>
 			<div className="container flex flex-col items-center justify-start gap-12 px-4 py-16">
