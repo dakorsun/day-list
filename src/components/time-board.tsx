@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { DEFAULT_ITEM_NAME, useDayItemStore } from '~/store';
 
-function formatSingleDigits(digits: number): string {
+export function formatSingleDigits(digits: number): string {
 	return digits < 10 ? `0${digits}` : `${digits}`;
 }
 
