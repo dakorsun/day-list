@@ -7,7 +7,7 @@ import { HeaderComponent } from '~/components/header';
 
 export const metadata: Metadata = {
 	title: 'Day List',
-	description: 'Your simple thing to manage your day',
+	description: 'Your simple thing to record your day',
 	icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
