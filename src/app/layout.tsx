@@ -4,6 +4,8 @@ import { GeistSans } from 'geist/font/sans';
 import { type Metadata } from 'next';
 import { ThemeProvider } from '~/components/theme-provider';
 import { HeaderComponent } from '~/components/header';
+import { SearchParamsProvider } from '~/components/search-params.provider';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
 	title: 'Day List',
@@ -18,7 +20,11 @@ export default function RootLayout({
 		<html lang="en" className={`${GeistSans.variable}`}>
 			<ThemeProvider>
 				<body className="bg-background text-foreground">
-					<HeaderComponent />
+					<Suspense fallback={null}>
+						<SearchParamsProvider>
+							<HeaderComponent />
+						</SearchParamsProvider>
+					</Suspense>
 					{children}
 				</body>
 			</ThemeProvider>
