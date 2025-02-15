@@ -14,9 +14,9 @@ export function DayListItem({ item }: { item: DayItem }) {
 			<CardContent>
 				<h3>From: </h3>
 				<div>
-					{formatSingleDigits(time.getUTCHours())}:
-					{formatSingleDigits(time.getUTCMinutes())}:
-					{formatSingleDigits(time.getUTCSeconds())}
+					{formatSingleDigits(time.getHours())}:
+					{formatSingleDigits(time.getMinutes())}:
+					{formatSingleDigits(time.getSeconds())}
 				</div>
 			</CardContent>
 		</Card>
