@@ -37,10 +37,10 @@ export function CheckpointForm({
 	const [itemsMap, options] = useMemo(() => {
 		const itemsMap = items
 			? items.reduce<Map<string, number>>((acc, item) => {
-					const currentNum = acc.get(item.name) ?? 0;
-					acc.set(item.name, currentNum + 1);
-					return acc;
-				}, new Map())
+				const currentNum = acc.get(item.name) ?? 0;
+				acc.set(item.name, currentNum + 1);
+				return acc;
+			}, new Map())
 			: new Map<string, number>();
 
 		const options = [...itemsMap.entries()]
@@ -65,6 +65,12 @@ export function CheckpointForm({
 	useEffect(() => {
 		form.setValue('name', selectedValue);
 	}, [selectedValue, form]);
+
+	useEffect(() => {
+		if (searchValue) {
+			form.setValue('name', searchValue);
+		}
+	}, [searchValue, form]);
 
 	const proceedCheckpoint = useCallback(
 		(name: string) => {
