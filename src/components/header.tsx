@@ -1,10 +1,10 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { TimeBoard } from '~/components/time-board';
 import ThemeSwitcher from '~/components/theme-switcher';
 import { CheckpointForm } from './checkpoint-form';
+import { useSearchParamsContext } from './search-params.provider';
 
 export function HeaderComponent() {
 	const headerRef = useRef<HTMLDivElement>(null);
@@ -12,11 +12,8 @@ export function HeaderComponent() {
 	const logoIgnoreRef = useRef<HTMLDivElement>(null);
 	const formIgnoreRef = useRef<HTMLFormElement>(null);
 	const autocompleteIgnoreRef = useRef<HTMLDivElement>(null);
-	const router = useRouter();
-	const searchParams = useSearchParams();
-	const isOpenFromUrl = searchParams.get('expanded') === 'true';
 
-	const [isOpen, setIsOpen] = useState(isOpenFromUrl);
+	const { isOpen, setIsOpen } = useSearchParamsContext();
 
 	const handleClickOutside = useCallback(
 		(event: MouseEvent) => {
@@ -55,7 +52,7 @@ export function HeaderComponent() {
 				setIsOpen(!isOpen);
 			}
 		},
-		[isOpen, headerRef, counterIgnoreRef],
+		[isOpen, headerRef, counterIgnoreRef, setIsOpen],
 	);
 
 	useEffect(() => {
@@ -64,16 +61,6 @@ export function HeaderComponent() {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
 	}, [handleClickOutside]);
-
-	useEffect(() => {
-		const params = new URLSearchParams(searchParams);
-		if (isOpen) {
-			params.set('expanded', 'true');
-		} else {
-			params.delete('expanded');
-		}
-		router.replace(`?${params.toString()}`, { scroll: false });
-	}, [isOpen, router, searchParams]);
 
 	return (
 		<div
