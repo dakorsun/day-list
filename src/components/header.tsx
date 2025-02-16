@@ -11,19 +11,33 @@ export function HeaderComponent() {
 	const counterIgnoreRef = useRef<HTMLDivElement>(null);
 	const logoIgnoreRef = useRef<HTMLDivElement>(null);
 	const formIgnoreRef = useRef<HTMLFormElement>(null);
+	const autocompleteIgnoreRef = useRef<HTMLDivElement>(null);
 
 	const { isOpen, setIsOpen } = useSearchParamsContext();
 
 	const handleClickOutside = useCallback(
 		(event: MouseEvent) => {
 			console.log('click');
-			console.log(headerRef, counterIgnoreRef, formIgnoreRef);
+			/* console.log(
+				headerRef,
+				counterIgnoreRef,
+				formIgnoreRef,
+				headerRef.current,
+				autocompleteIgnoreRef.current,
+				event.target,
+				autocompleteIgnoreRef.current?.contains(event.target as Node),
+			); */
 			if (
 				headerRef.current &&
 				!headerRef.current.contains(event.target as Node)
 			) {
-				console.log('outside', isOpen);
-				setIsOpen(false);
+				if (
+					autocompleteIgnoreRef.current &&
+					!autocompleteIgnoreRef.current.contains(event.target as Node)
+				) {
+					console.log('outside', isOpen);
+					setIsOpen(false);
+				}
 			} else if (
 				(counterIgnoreRef.current &&
 					counterIgnoreRef.current.contains(event.target as Node)) ||
@@ -72,7 +86,10 @@ export function HeaderComponent() {
 				className={`transition-[max-height] duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-[70vh]' : 'max-h-0'}`}
 			>
 				<div className="parent p-4 pt-16 overflow-y-auto max-h-[70vh] flex justify-start align-middle">
-					<CheckpointForm ignoreRef={formIgnoreRef} />
+					<CheckpointForm
+						ignoreRef={formIgnoreRef}
+						ignoreAutocompleteRef={autocompleteIgnoreRef}
+					/>
 				</div>
 			</div>
 		</div>
