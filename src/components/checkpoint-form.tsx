@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '~/components/ui/input';
 import { Button } from '~/components/ui/button';
 import { useForm } from 'react-hook-form';
 import {
@@ -34,13 +33,14 @@ export function CheckpointForm({
 	const updateLastItem = useDayItemStore(state => state.updateLastItem);
 	const lastItem = useDayItemStore(state => state.dayItems[0]);
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [itemsMap, options] = useMemo(() => {
 		const itemsMap = items
 			? items.reduce<Map<string, number>>((acc, item) => {
-				const currentNum = acc.get(item.name) ?? 0;
-				acc.set(item.name, currentNum + 1);
-				return acc;
-			}, new Map())
+					const currentNum = acc.get(item.name) ?? 0;
+					acc.set(item.name, currentNum + 1);
+					return acc;
+				}, new Map())
 			: new Map<string, number>();
 
 		const options = [...itemsMap.entries()]
