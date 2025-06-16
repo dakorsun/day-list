@@ -1,0 +1,15 @@
+singleQuote: true
+trailingComma: all
+bracketSpacing: true
+bracketSameLine: false
+arrowParens: avoid
+proseWrap: never
+endOfLine: auto
+singleAttributePerLine: false
+overrides:
+  - files: '*.html'
+    options:
+      parser: 'html'
+  - files: '*.component.html'
+    options:
+      parser: 'angular'
