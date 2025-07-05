@@ -25,6 +25,11 @@
     "@angular/material": "20.0.3",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "@ngneat/elf": "^2.5.1",
+    "@ngneat/elf-cli-ng": "^1.0.0",
+    "@ngneat/elf-entities": "^5.0.2",
+    "@ngneat/elf-pagination": "^1.1.0",
+    "@ngneat/elf-persist-state": "^1.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

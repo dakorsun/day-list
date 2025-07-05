@@ -32,6 +32,21 @@ importers:
       '@angular/router':
         specifier: ^20.0.0
         version: 20.0.3(@angular/common@20.0.3(@angular/core@20.0.3(@angular/compiler@20.0.3)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.0.3(@angular/compiler@20.0.3)(rxjs@7.8.2))(@angular/platform-browser@20.0.3(@angular/common@20.0.3(@angular/core@20.0.3(@angular/compiler@20.0.3)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.0.3(@angular/compiler@20.0.3)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@ngneat/elf':
+        specifier: ^2.5.1
+        version: 2.5.1(rxjs@7.8.2)
+      '@ngneat/elf-cli-ng':
+        specifier: ^1.0.0
+        version: 1.0.0
+      '@ngneat/elf-entities':
+        specifier: ^5.0.2
+        version: 5.0.2(@ngneat/elf@2.5.1(rxjs@7.8.2))(rxjs@7.8.2)
+      '@ngneat/elf-pagination':
+        specifier: ^1.1.0
+        version: 1.1.0(@ngneat/elf-entities@5.0.2(@ngneat/elf@2.5.1(rxjs@7.8.2))(rxjs@7.8.2))
+      '@ngneat/elf-persist-state':
+        specifier: ^1.2.1
+        version: 1.2.1(rxjs@7.8.2)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -1014,6 +1029,30 @@ packages:
   '@napi-rs/nice@1.0.1':
     resolution: {integrity: sha512-zM0mVWSXE0a0h9aKACLwKmD6nHcRiKrPpCfvaKqG1CqDEyjEawId0ocXxVzPMCAm6kkWr2P025msfxXEnt8UGQ==}
     engines: {node: '>= 10'}
+
+  '@ngneat/elf-cli-ng@1.0.0':
+    resolution: {integrity: sha512-twAvWL5tEtBy/Q65kqoa5aaSE4kG1sFGLZH7QPJwLEBuFayDIzyhT/swJQVLZc+Dv6M4cdHpAyLAg3OfeuWd+Q==}
+
+  '@ngneat/elf-entities@5.0.2':
+    resolution: {integrity: sha512-G4ag51lvM3tOSgpxVVFYAgsh/bOL5BkNb4Z0VtosaM/CTWTHoNrf8UdvcaeJ3+sP1RS3bmEdZ9xUE8ifnVxssA==}
+    peerDependencies:
+      '@ngneat/elf': '>=2.5.0'
+      rxjs: '>=7.0.0'
+
+  '@ngneat/elf-pagination@1.1.0':
+    resolution: {integrity: sha512-MhaeHxRXlLMDg4SIidWS/USr82l8tJ5/QKl8JbOTWDu6YAygVb2pwlXITPFG0Nk2dusRTt5/P2JcGdcxQK6//Q==}
+    peerDependencies:
+      '@ngneat/elf-entities': '*'
+
+  '@ngneat/elf-persist-state@1.2.1':
+    resolution: {integrity: sha512-R+5IRLC35cDT403sSs37UeqqOpHNnCwHl3eicPv/Rc+JJ7Av1bcQClSF2mHC0jE4pkYmEuVghpzUntvmrKCCwA==}
+    peerDependencies:
+      rxjs: '>=7.0.0'
+
+  '@ngneat/elf@2.5.1':
+    resolution: {integrity: sha512-13BItNZFgHglTiXuP9XhisNczwQ5QSzH+imAv9nAPsdbCq/3ortqkIYRnlxB8DGPVcuIjLujQ4OcZa+9QWgZtw==}
+    peerDependencies:
+      rxjs: '>=7.0.0'
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -5133,6 +5172,25 @@ snapshots:
       '@napi-rs/nice-win32-ia32-msvc': 1.0.1
       '@napi-rs/nice-win32-x64-msvc': 1.0.1
     optional: true
+
+  '@ngneat/elf-cli-ng@1.0.0': {}
+
+  '@ngneat/elf-entities@5.0.2(@ngneat/elf@2.5.1(rxjs@7.8.2))(rxjs@7.8.2)':
+    dependencies:
+      '@ngneat/elf': 2.5.1(rxjs@7.8.2)
+      rxjs: 7.8.2
+
+  '@ngneat/elf-pagination@1.1.0(@ngneat/elf-entities@5.0.2(@ngneat/elf@2.5.1(rxjs@7.8.2))(rxjs@7.8.2))':
+    dependencies:
+      '@ngneat/elf-entities': 5.0.2(@ngneat/elf@2.5.1(rxjs@7.8.2))(rxjs@7.8.2)
+
+  '@ngneat/elf-persist-state@1.2.1(rxjs@7.8.2)':
+    dependencies:
+      rxjs: 7.8.2
+
+  '@ngneat/elf@2.5.1(rxjs@7.8.2)':
+    dependencies:
+      rxjs: 7.8.2
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
