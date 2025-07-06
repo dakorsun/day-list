@@ -30,7 +30,10 @@
     "@ngneat/elf-entities": "^5.0.2",
     "@ngneat/elf-pagination": "^1.1.0",
     "@ngneat/elf-persist-state": "^1.2.1",
+    "@tailwindcss/postcss": "^4.1.11",
+    "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.11",
     "tslib": "^2.3.0",
     "zod": "^3.25.74"
   },
