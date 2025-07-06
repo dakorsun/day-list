@@ -1,1 +1,6 @@
-<p>tracker works!</p>
+<form class="tracker-form" [formGroup]="cutForm">
+  <mat-form-field>
+    <mat-label>Do Cut</mat-label>
+    <input matInput type="text" id="cut" [formControl]="cutInput" />
+  </mat-form-field>
+</form>
