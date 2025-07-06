@@ -17,12 +17,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class Tracker implements AfterViewInit {
   protected cutForm: FormGroup;
-  protected cutInput = new FormControl('');
+  protected cutInput = new FormControl<string>('');
 
   private readonly _fb = inject(FormBuilder);
 
   constructor() {
-    this.cutForm = this._fb.group({ cut: this.cutInput });
+    this.cutForm = this._fb.group({
+      cut: this.cutInput,
+    });
     this.cutForm.disable();
     this.cutForm.valueChanges.pipe(takeUntilDestroyed()).subscribe(value => {
       console.log('value changed: ', value);
