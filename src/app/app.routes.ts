@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Tracker } from '../components/tracker/tracker';
+import { Tracker } from '@pages/tracker/tracker';
 
 export const routes: Routes = [
   {
