@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, inject } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import {
   FormBuilder,
   FormControl,
@@ -11,7 +13,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-tracker',
-  imports: [MatInputModule, MatFormFieldModule, ReactiveFormsModule],
+  imports: [
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+  ],
   templateUrl: './tracker.html',
   styleUrl: './tracker.css',
 })
