@@ -2,4 +2,9 @@
   <div class="mt-10 md:mt-20">
     <app-tracker class="flex justify-center"></app-tracker>
   </div>
+  @for(cut of cuts$ | async; track cut.id) {
+  <section hlmCard class="w-full max-w-sm">
+    <div hlmCardContent>{{cut.name}} | {{cut.id}}</div>
+  </section>
+  }
 </div>

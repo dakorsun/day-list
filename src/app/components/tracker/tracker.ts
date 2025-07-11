@@ -11,6 +11,7 @@ import { HlmLabelDirective } from '@components/ui/ui-label-helm/src';
 import { HlmFormFieldModule } from '@components/ui/ui-form-field-helm/src';
 import { HlmButtonDirective } from '@components/ui/ui-button-helm/src';
 import { HlmCardImports } from '@components/ui/ui-card-helm/src';
+import { CutRepository } from '@state/cut.repository';
 
 @Component({
   selector: 'app-tracker',
@@ -31,6 +32,8 @@ export class Tracker implements AfterViewInit {
 
   private readonly _fb = inject(FormBuilder);
 
+  private readonly cutRepository = inject(CutRepository);
+
   constructor() {
     this.cutForm = this._fb.group({
       cut: this.cutInput,
@@ -47,5 +50,9 @@ export class Tracker implements AfterViewInit {
   }
   protected doCut() {
     console.log('submit');
+    this.cutRepository.addCut({
+      name: this.cutForm.value.cut as string,
+      id: new Date().getTime(),
+    });
   }
 }

@@ -1,9 +1,9 @@
-<section hlmCard class="w-full max-w-sm">
-  <div hlmCardHeader>
-    <h3 hlmCardTitle>Enter your last business</h3>
-  </div>
-  <div hlmCardContent>
-    <form class="tracker-form" [formGroup]="cutForm" (ngSubmit)="doCut()">
+<form id="cutForm" [formGroup]="cutForm" (ngSubmit)="doCut()">
+  <section hlmCard class="w-full max-w-sm">
+    <div hlmCardHeader>
+      <h3 hlmCardTitle>Enter your last business</h3>
+    </div>
+    <div hlmCardContent>
       <hlm-form-field>
         <label hlmLabel for="cut">What's up</label>
         <input
@@ -15,16 +15,17 @@
           [formControl]="cutInput"
         />
       </hlm-form-field>
-    </form>
-  </div>
-  <div hlmCardFooter>
-    <button
-      hlmBtn
-      type="submit"
-      class="px-2 md:px-4 lg:px-6 py-2"
-      [disabled]="cutForm.invalid"
-    >
-      Cut
-    </button>
-  </div>
-</section>
+    </div>
+    <div hlmCardFooter>
+      <button
+        hlmBtn
+        [formTarget]="cutForm"
+        type="submit"
+        class="px-2 md:px-4 lg:px-6 py-2"
+        [disabled]="cutForm.invalid"
+      >
+        Cut
+      </button>
+    </div>
+  </section>
+</form>
