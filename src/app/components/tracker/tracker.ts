@@ -1,8 +1,4 @@
 import { AfterViewInit, Component, inject } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import {
   FormBuilder,
   FormControl,
@@ -10,15 +6,21 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { HlmInputDirective } from '@components/ui/ui-input-helm/src';
+import { HlmLabelDirective } from '@components/ui/ui-label-helm/src';
+import { HlmFormFieldModule } from '@components/ui/ui-form-field-helm/src';
+import { HlmButtonDirective } from '@components/ui/ui-button-helm/src';
+import { HlmCardImports } from '@components/ui/ui-card-helm/src';
 
 @Component({
   selector: 'app-tracker',
   imports: [
-    MatInputModule,
-    MatFormFieldModule,
+    HlmFormFieldModule,
+    HlmInputDirective,
+    HlmLabelDirective,
+    HlmButtonDirective,
+    HlmCardImports,
     ReactiveFormsModule,
-    MatCardModule,
-    MatButtonModule,
   ],
   templateUrl: './tracker.html',
   styleUrl: './tracker.css',
@@ -36,10 +38,14 @@ export class Tracker implements AfterViewInit {
     this.cutForm.disable();
     this.cutForm.valueChanges.pipe(takeUntilDestroyed()).subscribe(value => {
       console.log('value changed: ', value);
+      console.log('form valid: ', this.cutForm.valid);
     });
   }
 
   ngAfterViewInit(): void {
     this.cutForm.enable();
+  }
+  protected doCut() {
+    console.log('submit');
   }
 }
