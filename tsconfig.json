@@ -1,5 +1,3 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -18,7 +16,25 @@
     "paths": {
       "@components/*": ["app/components/*"],
       "@pages/*": ["app/pages/*"],
-      "@store/*": ["app/store/*"]
+      "@store/*": ["app/store/*"],
+      "@spartan-ng/helm/button": [
+        "./src/app/components/ui/ui-button-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/card": [
+        "./src/app/components/ui/ui-card-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/form-field": [
+        "./src/app/components/ui/ui-form-field-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/input": [
+        "./src/app/components/ui/ui-input-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/label": [
+        "./src/app/components/ui/ui-label-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/typography": [
+        "./src/app/components/ui/ui-typography-helm/src/index.ts"
+      ]
     }
   },
   "angularCompilerOptions": {
