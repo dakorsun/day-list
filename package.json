@@ -77,5 +77,14 @@
     "node": "^20",
     "npm": "^10",
     "pnpm": "^10"
+  },
+  "elf": {
+    "cli": {
+      "repoTemplate": "class",
+      "inlineStoreInClass": true,
+      "idKey": "id",
+      "repoLibrary": "state",
+      "plugins": []
+    }
   }
 }
