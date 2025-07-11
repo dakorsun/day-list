@@ -1,29 +1,30 @@
-<form class="tracker-form" [formGroup]="cutForm">
-  <mat-card appearance="outlined">
-    <mat-card-header>
-      <mat-card-title>Enter your last business </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="w-full">
-        <mat-label>What's up</mat-label>
+<section hlmCard class="w-full max-w-sm">
+  <div hlmCardHeader>
+    <h3 hlmCardTitle>Enter your last business</h3>
+  </div>
+  <div hlmCardContent>
+    <form class="tracker-form" [formGroup]="cutForm" (ngSubmit)="doCut()">
+      <hlm-form-field>
+        <label hlmLabel for="cut">What's up</label>
         <input
-          matInput
+          hlmInput
+          class="w-80"
           type="text"
           id="cut"
           placeholder="Cut"
           [formControl]="cutInput"
         />
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-footer class="p-4">
-      <button
-        matButton="filled"
-        type="submit"
-        class="px-2 md:px-4 lg:px-6 py-2"
-        [disabled]="cutForm.invalid"
-      >
-        Cut
-      </button>
-    </mat-card-footer>
-  </mat-card>
-</form>
+      </hlm-form-field>
+    </form>
+  </div>
+  <div hlmCardFooter>
+    <button
+      hlmBtn
+      type="submit"
+      class="px-2 md:px-4 lg:px-6 py-2"
+      [disabled]="cutForm.invalid"
+    >
+      Cut
+    </button>
+  </div>
+</section>
